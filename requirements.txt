@@ -1,0 +1,27 @@
+# Robot Framework Core
+robotframework>=7.0.0
+
+# Web Testing
+robotframework-seleniumlibrary>=6.3.0
+selenium>=4.11.0,<4.16.0
+
+# Image-based Testing
+robotframework-imagehorizonlibrary>=1.0.0
+
+# Computer Vision Dependencies for ImageHorizonLibrary
+opencv-python>=4.5.0
+numpy>=1.20.0
+pillow>=8.0.0
+
+# WebDriver Management (optional but recommended)
+webdriver-manager>=3.8.0
+
+# Additional useful libraries
+robotframework-pythonlibcore>=4.0.0
+
+
+# ติดตั้ง dependencies ทั้งหมด
+# pip install -r requirements.txt
+
+# หรือใน environment ที่คุณใช้
+# C:\Python313\python.exe -m pip install -r requirements.txt
