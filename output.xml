@@ -1,81 +1,1043 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.13.3 on win32)" generated="2025-08-30T19:13:50.572464" rpa="false" schemaversion="5">
-<suite id="s1" name="Test" source="C:\Users\User\Desktop\Git Tree\test_imagehorizonlibrary\test.robot">
-<test id="s1-t1" name="Create Reference Images" line="11">
+<robot generator="Robot 7.3.2 (Python 3.13.3 on win32)" generated="2025-08-31T15:05:53.941376" rpa="false" schemaversion="5">
+<suite id="s1" name="Test" source="c:\Users\User\Desktop\Git Tree\test_robot_imagehorizonlibrary\test.robot">
+<test id="s1-t1" name="IHAVECPU using ImageHorizonLibrary" line="57">
+<kw name="Set Reference Folder" owner="ImageHorizonLibrary">
+<arg>c:\\Users\\User\\Desktop\\Git Tree\\test_robot_imagehorizonlibrary</arg>
+<doc>Sets where all reference images are stored.</doc>
+<status status="PASS" start="2025-08-31T15:05:54.985438" elapsed="0.000243"/>
+</kw>
+<kw name="Set Confidence" owner="ImageHorizonLibrary">
+<arg>0.5</arg>
+<doc>Sets the accuracy when finding images.</doc>
+<status status="PASS" start="2025-08-31T15:05:54.985945" elapsed="0.000128"/>
+</kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-08-30T19:13:51.629818" level="INFO">Opening browser 'chrome' to base url 'https://www.google.com'.</msg>
-<arg>https://www.google.com</arg>
+<msg time="2025-08-31T15:05:54.987362" level="INFO">Opening browser 'chrome' to base url 'http://ihavecpu.com/'.</msg>
+<arg>http://ihavecpu.com/</arg>
 <arg>chrome</arg>
 <arg>options=add_argument("--ignore-certificate-errors")</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-08-30T19:13:51.629354" elapsed="2.547266"/>
+<status status="PASS" start="2025-08-31T15:05:54.986970" elapsed="6.257758"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-08-30T19:13:54.177433" elapsed="0.040269"/>
+<status status="PASS" start="2025-08-31T15:06:01.245287" elapsed="0.086430"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-08-30T19:13:59.219832" level="INFO">Slept 5 seconds.</msg>
+<msg time="2025-08-31T15:06:06.332742" level="INFO">Slept 5 seconds.</msg>
 <arg>5s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-08-30T19:13:54.218102" elapsed="5.001925"/>
+<status status="PASS" start="2025-08-31T15:06:01.332147" elapsed="5.000828"/>
 </kw>
-<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
-<msg time="2025-08-30T19:13:59.342459" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="reference-google-page"&gt;&lt;img src="reference-google-page" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2025-08-30T19:13:59.342605" level="INFO">C:\Users\User\AppData\Roaming\Python\Python313\site-packages\selenium\webdriver\remote\webdriver.py:826: UserWarning: name used for saved screenshot does not match file type. It should end with a `.png` extension
-  return self.get_screenshot_as_file(filename)</msg>
-<arg>reference-google-page</arg>
-<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<status status="PASS" start="2025-08-30T19:13:59.220463" elapsed="0.122406"/>
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:06.500775" level="INFO">Image "ihavecpu_logo.png" found at (np.int64(139), np.int64(266))</msg>
+<arg>${ihavecpu_logo}</arg>
+<arg>30</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="PASS" start="2025-08-31T15:06:06.333497" elapsed="0.167476"/>
 </kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-08-30T19:13:59.343687" level="WARN">Now take manual screenshots and save as Screenshot-4.png and Screenshot-5.png</msg>
-<arg>Now take manual screenshots and save as Screenshot-4.png and Screenshot-5.png</arg>
-<arg>WARN</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-30T19:13:59.343302" elapsed="0.001670"/>
+<kw name="Scroll Until Image Found">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-08-31T15:06:06.503591" level="INFO">${found} = False</msg>
+<var>${found}</var>
+<arg>${False}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-08-31T15:06:06.503205" elapsed="0.000444"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>--- Start scrolling to find image: ${image} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-08-31T15:06:06.503853" elapsed="0.000422"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:06.656783" level="FAIL">ImageNotFoundException</msg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="FAIL" start="2025-08-31T15:06:06.505168" elapsed="0.156864">ImageNotFoundException</status>
+</kw>
+<msg time="2025-08-31T15:06:06.662342" level="INFO">${exists} = False</msg>
+<var>${exists}</var>
+<arg>Wait For</arg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-31T15:06:06.504999" elapsed="0.157414"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Found image ${image}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:06.662792" elapsed="0.000035"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${found}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:06.662934" elapsed="0.000029"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:06.663097" elapsed="0.000044"/>
+</kw>
+<status status="NOT RUN" start="2025-08-31T15:06:06.662573" elapsed="0.000647"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:06.662530" elapsed="0.000760"/>
+</if>
+<kw name="Press Combination" owner="ImageHorizonLibrary">
+<arg>Key.PAGEDOWN</arg>
+<doc>Press given keyboard keys.</doc>
+<status status="PASS" start="2025-08-31T15:06:06.663411" elapsed="0.102415"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-08-30T19:14:19.345932" level="INFO">Slept 20 seconds.</msg>
-<arg>20s</arg>
+<msg time="2025-08-31T15:06:07.766819" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-08-30T19:13:59.345435" elapsed="20.000640"/>
+<status status="PASS" start="2025-08-31T15:06:06.766176" elapsed="1.000821"/>
 </kw>
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-08-30T19:14:19.346483" elapsed="2.249149"/>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-08-31T15:06:06.504843" elapsed="1.262268"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:07.919497" level="FAIL">ImageNotFoundException</msg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="FAIL" start="2025-08-31T15:06:07.767956" elapsed="0.154031">ImageNotFoundException</status>
+</kw>
+<msg time="2025-08-31T15:06:07.922218" level="INFO">${exists} = False</msg>
+<var>${exists}</var>
+<arg>Wait For</arg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-31T15:06:07.767689" elapsed="0.154565"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Found image ${image}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:07.922633" elapsed="0.000057"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${found}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:07.922847" elapsed="0.000040"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:07.923013" elapsed="0.000031"/>
+</kw>
+<status status="NOT RUN" start="2025-08-31T15:06:07.922389" elapsed="0.000706"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:07.922354" elapsed="0.000801"/>
+</if>
+<kw name="Press Combination" owner="ImageHorizonLibrary">
+<arg>Key.PAGEDOWN</arg>
+<doc>Press given keyboard keys.</doc>
+<status status="PASS" start="2025-08-31T15:06:07.923286" elapsed="0.102884"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-31T15:06:09.027002" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-31T15:06:08.026403" elapsed="1.000745"/>
+</kw>
+<var name="${i}">1</var>
+<status status="PASS" start="2025-08-31T15:06:07.767468" elapsed="1.259775"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:09.181269" level="FAIL">ImageNotFoundException</msg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="FAIL" start="2025-08-31T15:06:09.027790" elapsed="0.156610">ImageNotFoundException</status>
+</kw>
+<msg time="2025-08-31T15:06:09.184684" level="INFO">${exists} = False</msg>
+<var>${exists}</var>
+<arg>Wait For</arg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-31T15:06:09.027629" elapsed="0.157189"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Found image ${image}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:09.185470" elapsed="0.000058"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${found}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:09.185928" elapsed="0.000056"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:09.186137" elapsed="0.000041"/>
+</kw>
+<status status="NOT RUN" start="2025-08-31T15:06:09.185100" elapsed="0.001132"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:09.185039" elapsed="0.001261"/>
+</if>
+<kw name="Press Combination" owner="ImageHorizonLibrary">
+<arg>Key.PAGEDOWN</arg>
+<doc>Press given keyboard keys.</doc>
+<status status="PASS" start="2025-08-31T15:06:09.186441" elapsed="0.103515"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-31T15:06:10.291387" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-31T15:06:09.290448" elapsed="1.001208"/>
+</kw>
+<var name="${i}">2</var>
+<status status="PASS" start="2025-08-31T15:06:09.027488" elapsed="1.264318"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:10.438950" level="FAIL">ImageNotFoundException</msg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="FAIL" start="2025-08-31T15:06:10.292722" elapsed="0.148348">ImageNotFoundException</status>
+</kw>
+<msg time="2025-08-31T15:06:10.441328" level="INFO">${exists} = False</msg>
+<var>${exists}</var>
+<arg>Wait For</arg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-31T15:06:10.292463" elapsed="0.148922"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Found image ${image}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:10.441908" elapsed="0.000070"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${found}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:10.442266" elapsed="0.000049"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:10.442430" elapsed="0.000037"/>
+</kw>
+<status status="NOT RUN" start="2025-08-31T15:06:10.441555" elapsed="0.000948"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:10.441509" elapsed="0.001041"/>
+</if>
+<kw name="Press Combination" owner="ImageHorizonLibrary">
+<arg>Key.PAGEDOWN</arg>
+<doc>Press given keyboard keys.</doc>
+<status status="PASS" start="2025-08-31T15:06:10.442630" elapsed="0.102467"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-31T15:06:11.546012" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-31T15:06:10.545334" elapsed="1.000916"/>
+</kw>
+<var name="${i}">3</var>
+<status status="PASS" start="2025-08-31T15:06:10.292217" elapsed="1.254174"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:11.696080" level="FAIL">ImageNotFoundException</msg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="FAIL" start="2025-08-31T15:06:11.547443" elapsed="0.151116">ImageNotFoundException</status>
+</kw>
+<msg time="2025-08-31T15:06:11.698901" level="INFO">${exists} = False</msg>
+<var>${exists}</var>
+<arg>Wait For</arg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-31T15:06:11.547181" elapsed="0.151771"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Found image ${image}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:11.699535" elapsed="0.000061"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${found}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:11.699807" elapsed="0.000046"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:11.699994" elapsed="0.000038"/>
+</kw>
+<status status="NOT RUN" start="2025-08-31T15:06:11.699167" elapsed="0.000915"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:11.699106" elapsed="0.001046"/>
+</if>
+<kw name="Press Combination" owner="ImageHorizonLibrary">
+<arg>Key.PAGEDOWN</arg>
+<doc>Press given keyboard keys.</doc>
+<status status="PASS" start="2025-08-31T15:06:11.700269" elapsed="0.104625"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-31T15:06:12.806451" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-31T15:06:11.805386" elapsed="1.001279"/>
+</kw>
+<var name="${i}">4</var>
+<status status="PASS" start="2025-08-31T15:06:11.546800" elapsed="1.259992"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:12.957040" level="FAIL">ImageNotFoundException</msg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="FAIL" start="2025-08-31T15:06:12.807566" elapsed="0.151775">ImageNotFoundException</status>
+</kw>
+<msg time="2025-08-31T15:06:12.959715" level="INFO">${exists} = False</msg>
+<var>${exists}</var>
+<arg>Wait For</arg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-31T15:06:12.807355" elapsed="0.152415"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Found image ${image}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:12.960323" elapsed="0.000058"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${found}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:12.960519" elapsed="0.000028"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:12.960641" elapsed="0.000024"/>
+</kw>
+<status status="NOT RUN" start="2025-08-31T15:06:12.959987" elapsed="0.000712"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:12.959925" elapsed="0.000823"/>
+</if>
+<kw name="Press Combination" owner="ImageHorizonLibrary">
+<arg>Key.PAGEDOWN</arg>
+<doc>Press given keyboard keys.</doc>
+<status status="PASS" start="2025-08-31T15:06:12.960827" elapsed="0.103628"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-31T15:06:14.065705" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-31T15:06:13.064735" elapsed="1.001303"/>
+</kw>
+<var name="${i}">5</var>
+<status status="PASS" start="2025-08-31T15:06:12.807137" elapsed="1.259068"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:14.230265" level="FAIL">ImageNotFoundException</msg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="FAIL" start="2025-08-31T15:06:14.078042" elapsed="0.155095">ImageNotFoundException</status>
+</kw>
+<msg time="2025-08-31T15:06:14.233594" level="INFO">${exists} = False</msg>
+<var>${exists}</var>
+<arg>Wait For</arg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-31T15:06:14.077630" elapsed="0.156024"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Found image ${image}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:14.234223" elapsed="0.000062"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${found}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:14.234887" elapsed="0.000066"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:14.235239" elapsed="0.000063"/>
+</kw>
+<status status="NOT RUN" start="2025-08-31T15:06:14.233886" elapsed="0.001488"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:14.233802" elapsed="0.001648"/>
+</if>
+<kw name="Press Combination" owner="ImageHorizonLibrary">
+<arg>Key.PAGEDOWN</arg>
+<doc>Press given keyboard keys.</doc>
+<status status="PASS" start="2025-08-31T15:06:14.235645" elapsed="0.102747"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-31T15:06:15.339511" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-31T15:06:14.338734" elapsed="1.000954"/>
+</kw>
+<var name="${i}">6</var>
+<status status="PASS" start="2025-08-31T15:06:14.077268" elapsed="1.262534"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:15.482593" level="FAIL">ImageNotFoundException</msg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="FAIL" start="2025-08-31T15:06:15.340365" elapsed="0.145007">ImageNotFoundException</status>
+</kw>
+<msg time="2025-08-31T15:06:15.485654" level="INFO">${exists} = False</msg>
+<var>${exists}</var>
+<arg>Wait For</arg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-31T15:06:15.340203" elapsed="0.145487"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Found image ${image}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:15.486027" elapsed="0.000037"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${found}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:15.486165" elapsed="0.000023"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:15.486269" elapsed="0.000021"/>
+</kw>
+<status status="NOT RUN" start="2025-08-31T15:06:15.485822" elapsed="0.000499"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:15.485790" elapsed="0.000572"/>
+</if>
+<kw name="Press Combination" owner="ImageHorizonLibrary">
+<arg>Key.PAGEDOWN</arg>
+<doc>Press given keyboard keys.</doc>
+<status status="PASS" start="2025-08-31T15:06:15.486433" elapsed="0.102739"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-31T15:06:16.590438" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-31T15:06:15.589573" elapsed="1.001014"/>
+</kw>
+<var name="${i}">7</var>
+<status status="PASS" start="2025-08-31T15:06:15.340060" elapsed="1.250621"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:16.742008" level="FAIL">ImageNotFoundException</msg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="FAIL" start="2025-08-31T15:06:16.591293" elapsed="0.152823">ImageNotFoundException</status>
+</kw>
+<msg time="2025-08-31T15:06:16.744375" level="INFO">${exists} = False</msg>
+<var>${exists}</var>
+<arg>Wait For</arg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-31T15:06:16.591113" elapsed="0.153327"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Found image ${image}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:16.745047" elapsed="0.000058"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${found}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:16.745255" elapsed="0.000047"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:16.745502" elapsed="0.000038"/>
+</kw>
+<status status="NOT RUN" start="2025-08-31T15:06:16.744625" elapsed="0.000960"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:16.744573" elapsed="0.001061"/>
+</if>
+<kw name="Press Combination" owner="ImageHorizonLibrary">
+<arg>Key.PAGEDOWN</arg>
+<doc>Press given keyboard keys.</doc>
+<status status="PASS" start="2025-08-31T15:06:16.745718" elapsed="0.102227"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-31T15:06:17.848850" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-31T15:06:16.848243" elapsed="1.000814"/>
+</kw>
+<var name="${i}">8</var>
+<status status="PASS" start="2025-08-31T15:06:16.590954" elapsed="1.258220"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:18.006464" level="FAIL">ImageNotFoundException</msg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="FAIL" start="2025-08-31T15:06:17.849948" elapsed="0.158284">ImageNotFoundException</status>
+</kw>
+<msg time="2025-08-31T15:06:18.008483" level="INFO">${exists} = False</msg>
+<var>${exists}</var>
+<arg>Wait For</arg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-31T15:06:17.849735" elapsed="0.158801"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Found image ${image}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:18.008991" elapsed="0.000052"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${found}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:18.009174" elapsed="0.000028"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:18.009294" elapsed="0.000024"/>
+</kw>
+<status status="NOT RUN" start="2025-08-31T15:06:18.008732" elapsed="0.000619"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:18.008690" elapsed="0.000711"/>
+</if>
+<kw name="Press Combination" owner="ImageHorizonLibrary">
+<arg>Key.PAGEDOWN</arg>
+<doc>Press given keyboard keys.</doc>
+<status status="PASS" start="2025-08-31T15:06:18.009479" elapsed="0.103676"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-31T15:06:19.114833" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-31T15:06:18.113867" elapsed="1.001135"/>
+</kw>
+<var name="${i}">9</var>
+<status status="PASS" start="2025-08-31T15:06:17.849522" elapsed="1.265588"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:19.267056" level="FAIL">ImageNotFoundException</msg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="FAIL" start="2025-08-31T15:06:19.115816" elapsed="0.153101">ImageNotFoundException</status>
+</kw>
+<msg time="2025-08-31T15:06:19.269162" level="INFO">${exists} = False</msg>
+<var>${exists}</var>
+<arg>Wait For</arg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-31T15:06:19.115600" elapsed="0.153606"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Found image ${image}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:19.269570" elapsed="0.000038"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${found}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:19.269723" elapsed="0.000029"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:19.269855" elapsed="0.000028"/>
+</kw>
+<status status="NOT RUN" start="2025-08-31T15:06:19.269351" elapsed="0.000572"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:19.269316" elapsed="0.000655"/>
+</if>
+<kw name="Press Combination" owner="ImageHorizonLibrary">
+<arg>Key.PAGEDOWN</arg>
+<doc>Press given keyboard keys.</doc>
+<status status="PASS" start="2025-08-31T15:06:19.270056" elapsed="0.102729"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-31T15:06:20.373715" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-31T15:06:19.373066" elapsed="1.000885"/>
+</kw>
+<var name="${i}">10</var>
+<status status="PASS" start="2025-08-31T15:06:19.115417" elapsed="1.258715"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:20.514817" level="FAIL">ImageNotFoundException</msg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="FAIL" start="2025-08-31T15:06:20.375219" elapsed="0.141951">ImageNotFoundException</status>
+</kw>
+<msg time="2025-08-31T15:06:20.517446" level="INFO">${exists} = False</msg>
+<var>${exists}</var>
+<arg>Wait For</arg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-31T15:06:20.374970" elapsed="0.142526"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Found image ${image}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:20.517913" elapsed="0.000058"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${found}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:20.518141" elapsed="0.000045"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:20.518336" elapsed="0.000043"/>
+</kw>
+<status status="NOT RUN" start="2025-08-31T15:06:20.517651" elapsed="0.000785"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:20.517613" elapsed="0.000889"/>
+</if>
+<kw name="Press Combination" owner="ImageHorizonLibrary">
+<arg>Key.PAGEDOWN</arg>
+<doc>Press given keyboard keys.</doc>
+<status status="PASS" start="2025-08-31T15:06:20.518621" elapsed="0.103179"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-31T15:06:21.623144" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-31T15:06:20.622033" elapsed="1.001309"/>
+</kw>
+<var name="${i}">11</var>
+<status status="PASS" start="2025-08-31T15:06:20.374749" elapsed="1.248720"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:21.776582" level="FAIL">ImageNotFoundException</msg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="FAIL" start="2025-08-31T15:06:21.624271" elapsed="0.154291">ImageNotFoundException</status>
+</kw>
+<msg time="2025-08-31T15:06:21.778792" level="INFO">${exists} = False</msg>
+<var>${exists}</var>
+<arg>Wait For</arg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-31T15:06:21.624084" elapsed="0.154748"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Found image ${image}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:21.779199" elapsed="0.000041"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${found}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:21.779364" elapsed="0.000036"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:21.779505" elapsed="0.000028"/>
+</kw>
+<status status="NOT RUN" start="2025-08-31T15:06:21.778976" elapsed="0.000598"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:21.778941" elapsed="0.000685"/>
+</if>
+<kw name="Press Combination" owner="ImageHorizonLibrary">
+<arg>Key.PAGEDOWN</arg>
+<doc>Press given keyboard keys.</doc>
+<status status="PASS" start="2025-08-31T15:06:21.779710" elapsed="0.102691"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-31T15:06:22.883681" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-31T15:06:21.882715" elapsed="1.001198"/>
+</kw>
+<var name="${i}">12</var>
+<status status="PASS" start="2025-08-31T15:06:21.623896" elapsed="1.260175"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:23.031136" level="FAIL">ImageNotFoundException</msg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="FAIL" start="2025-08-31T15:06:22.884827" elapsed="0.148442">ImageNotFoundException</status>
+</kw>
+<msg time="2025-08-31T15:06:23.033502" level="INFO">${exists} = False</msg>
+<var>${exists}</var>
+<arg>Wait For</arg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-31T15:06:22.884602" elapsed="0.148942"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Found image ${image}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:23.034035" elapsed="0.000046"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${found}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:23.034222" elapsed="0.000033"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:23.034662" elapsed="0.000049"/>
+</kw>
+<status status="NOT RUN" start="2025-08-31T15:06:23.033743" elapsed="0.001020"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:23.033663" elapsed="0.001177"/>
+</if>
+<kw name="Press Combination" owner="ImageHorizonLibrary">
+<arg>Key.PAGEDOWN</arg>
+<doc>Press given keyboard keys.</doc>
+<status status="PASS" start="2025-08-31T15:06:23.034950" elapsed="0.103542"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-31T15:06:24.139347" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-31T15:06:23.138873" elapsed="1.000710"/>
+</kw>
+<var name="${i}">13</var>
+<status status="PASS" start="2025-08-31T15:06:22.884413" elapsed="1.255309"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:24.306329" level="FAIL">ImageNotFoundException</msg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="FAIL" start="2025-08-31T15:06:24.140556" elapsed="0.168293">ImageNotFoundException</status>
+</kw>
+<msg time="2025-08-31T15:06:24.309154" level="INFO">${exists} = False</msg>
+<var>${exists}</var>
+<arg>Wait For</arg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-31T15:06:24.140342" elapsed="0.168851"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Found image ${image}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:24.309628" elapsed="0.000038"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${found}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:24.309818" elapsed="0.000062"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:24.310037" elapsed="0.000037"/>
+</kw>
+<status status="NOT RUN" start="2025-08-31T15:06:24.309365" elapsed="0.000798"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:24.309314" elapsed="0.000927"/>
+</if>
+<kw name="Press Combination" owner="ImageHorizonLibrary">
+<arg>Key.PAGEDOWN</arg>
+<doc>Press given keyboard keys.</doc>
+<status status="PASS" start="2025-08-31T15:06:24.310373" elapsed="0.102545"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-31T15:06:25.413842" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-31T15:06:24.413197" elapsed="1.000885"/>
+</kw>
+<var name="${i}">14</var>
+<status status="PASS" start="2025-08-31T15:06:24.140120" elapsed="1.274101"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:25.568244" level="FAIL">ImageNotFoundException</msg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="FAIL" start="2025-08-31T15:06:25.415082" elapsed="0.155509">ImageNotFoundException</status>
+</kw>
+<msg time="2025-08-31T15:06:25.570888" level="INFO">${exists} = False</msg>
+<var>${exists}</var>
+<arg>Wait For</arg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-31T15:06:25.414850" elapsed="0.156092"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Found image ${image}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:25.571515" elapsed="0.000062"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${found}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:25.571734" elapsed="0.000034"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:25.571882" elapsed="0.000024"/>
+</kw>
+<status status="NOT RUN" start="2025-08-31T15:06:25.571153" elapsed="0.000856"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:25.571093" elapsed="0.000969"/>
+</if>
+<kw name="Press Combination" owner="ImageHorizonLibrary">
+<arg>Key.PAGEDOWN</arg>
+<doc>Press given keyboard keys.</doc>
+<status status="PASS" start="2025-08-31T15:06:25.572147" elapsed="0.103547"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-31T15:06:26.676649" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-31T15:06:25.675928" elapsed="1.001052"/>
+</kw>
+<var name="${i}">15</var>
+<status status="PASS" start="2025-08-31T15:06:25.414617" elapsed="1.262535"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:26.851201" level="FAIL">ImageNotFoundException</msg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="FAIL" start="2025-08-31T15:06:26.704094" elapsed="0.149253">ImageNotFoundException</status>
+</kw>
+<msg time="2025-08-31T15:06:26.853636" level="INFO">${exists} = False</msg>
+<var>${exists}</var>
+<arg>Wait For</arg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-31T15:06:26.678042" elapsed="0.175646"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Found image ${image}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:26.854121" elapsed="0.000037"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${found}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:26.854258" elapsed="0.000023"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:26.854364" elapsed="0.000021"/>
+</kw>
+<status status="NOT RUN" start="2025-08-31T15:06:26.853856" elapsed="0.000560"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:26.853812" elapsed="0.000647"/>
+</if>
+<kw name="Press Combination" owner="ImageHorizonLibrary">
+<arg>Key.PAGEDOWN</arg>
+<doc>Press given keyboard keys.</doc>
+<status status="PASS" start="2025-08-31T15:06:26.854529" elapsed="0.103105"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-31T15:06:27.958244" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-31T15:06:26.957858" elapsed="1.000599"/>
+</kw>
+<var name="${i}">16</var>
+<status status="PASS" start="2025-08-31T15:06:26.677712" elapsed="1.280865"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For" owner="ImageHorizonLibrary">
+<msg time="2025-08-31T15:06:28.111084" level="INFO">Image "about_me.png" found at (np.int64(737), np.int64(607))</msg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Tries to locate given image from the screen for given time.</doc>
+<status status="PASS" start="2025-08-31T15:06:27.959394" elapsed="0.151946"/>
+</kw>
+<msg time="2025-08-31T15:06:28.111788" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Wait For</arg>
+<arg>${image}</arg>
+<arg>15</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-08-31T15:06:27.959171" elapsed="0.152660"/>
+</kw>
+<if>
+<branch type="IF" condition="${exists}">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Found image ${image}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-08-31T15:06:28.112354" elapsed="0.000549"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-08-31T15:06:28.113530" level="INFO">${found} = True</msg>
+<var>${found}</var>
+<arg>${True}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-08-31T15:06:28.113182" elapsed="0.000396"/>
+</kw>
+<kw name="Exit For Loop" owner="BuiltIn">
+<msg time="2025-08-31T15:06:28.114032" level="INFO">Exiting for loop altogether.</msg>
+<doc>Stops executing the enclosing FOR loop.</doc>
+<status status="PASS" start="2025-08-31T15:06:28.113820" elapsed="0.000339"/>
+</kw>
+<status status="PASS" start="2025-08-31T15:06:28.112035" elapsed="0.002190"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:28.111980" elapsed="0.002352"/>
+</if>
+<kw name="Press Combination" owner="ImageHorizonLibrary">
+<arg>Key.PAGEDOWN</arg>
+<doc>Press given keyboard keys.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:28.114487" elapsed="0.000044"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:28.114678" elapsed="0.000053"/>
+</kw>
+<var name="${i}">17</var>
+<status status="PASS" start="2025-08-31T15:06:27.958948" elapsed="0.155837"/>
+</iter>
+<var>${i}</var>
+<value>${max_scroll}</value>
+<status status="PASS" start="2025-08-31T15:06:06.504422" elapsed="21.610443"/>
+</for>
+<if>
+<branch type="IF" condition="not ${found}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Image ${image} not found after ${max_scroll} scrolls</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-08-31T15:06:28.115311" elapsed="0.000030"/>
+</kw>
+<status status="NOT RUN" start="2025-08-31T15:06:28.115035" elapsed="0.000349"/>
+</branch>
+<status status="PASS" start="2025-08-31T15:06:28.115008" elapsed="0.000415"/>
+</if>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>--- Finished scrolling ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-08-31T15:06:28.115502" elapsed="0.000268"/>
+</kw>
+<arg>${about_me}</arg>
+<arg>25</arg>
+<status status="PASS" start="2025-08-31T15:06:06.502324" elapsed="21.613606"/>
 </kw>
 <kw name="Test TearDown Capture" type="TEARDOWN">
-<kw name="Close All Browsers" owner="SeleniumLibrary">
-<doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="PASS" start="2025-08-30T19:14:21.600084" elapsed="0.000317"/>
-</kw>
 <kw name="Capture Page Screenshot" owner="SeleniumLibrary">
-<msg time="2025-08-30T19:14:21.600785" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2025-08-31T15:06:28.272330" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-13.png"&gt;&lt;img src="selenium-screenshot-13.png" width="800px"&gt;&lt;/a&gt;</msg>
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<status status="PASS" start="2025-08-30T19:14:21.600614" elapsed="0.000254"/>
+<status status="PASS" start="2025-08-31T15:06:28.116966" elapsed="0.155531"/>
 </kw>
 <doc>Cleanup after test execution</doc>
-<status status="PASS" start="2025-08-30T19:14:21.599459" elapsed="0.001529"/>
+<status status="PASS" start="2025-08-31T15:06:28.116548" elapsed="0.156089"/>
 </kw>
-<doc>Create reference images for testing</doc>
-<tag>setup</tag>
-<status status="PASS" start="2025-08-30T19:13:51.626905" elapsed="29.975574"/>
+<doc>Image-based approach (fragile). Ensure images match your screen and ImageHorizonLibrary is installed.</doc>
+<tag>image</tag>
+<status status="PASS" start="2025-08-31T15:05:54.984344" elapsed="33.288644"/>
 </test>
-<status status="PASS" start="2025-08-30T19:13:50.576595" elapsed="31.028855"/>
+<status status="PASS" start="2025-08-31T15:05:53.943490" elapsed="34.330534"/>
 </suite>
 <statistics>
 <total>
 <stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">setup</stat>
+<stat pass="1" fail="0" skip="0">image</stat>
 </tag>
 <suite>
 <stat name="Test" id="s1" pass="1" fail="0" skip="0">Test</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-08-30T19:13:59.343687" level="WARN">Now take manual screenshots and save as Screenshot-4.png and Screenshot-5.png</msg>
 </errors>
 </robot>
