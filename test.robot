@@ -24,7 +24,7 @@ Scroll Until Image Found
     ${found}=    Set Variable    ${False}
     Log To Console    --- Start scrolling to find image: ${image} ---
     FOR    ${i}    IN RANGE    ${max_scroll}
-        ${exists}=    Run Keyword And Return Status      Wait For       ${image}       15 
+        ${exists}=    Run Keyword And Return Status      Wait For       ${image}       5 
         # ถ้าเจอ
         IF    ${exists}
             Log To Console    ✅ Found image ${image}
